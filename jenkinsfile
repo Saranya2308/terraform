@@ -4,6 +4,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = AKIAXEFUM77ALPTFQ5PK   // Jenkins credential ID
         AWS_SECRET_ACCESS_KEY = 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
+        AWS_DEFAULT_REGION    = 'us-east-1' // Specify the AWS region
     }
 
     stages {
