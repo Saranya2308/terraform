@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('your-aws-access-key-id')    // Jenkins credential ID
+        AWS_SECRET_ACCESS_KEY = credentials('your-aws-secret-access-key')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Saranya2308/terraform' // Replace with your repo URL
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                sh 'terraform plan'
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
+}
